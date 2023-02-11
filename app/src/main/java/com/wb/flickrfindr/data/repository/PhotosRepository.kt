@@ -2,7 +2,7 @@ package com.wb.flickrfindr.data.repository
 
 import com.wb.flickrfindr.data.remote.model.PhotosApiResponse
 
-interface PhotoRepository {
+interface PhotosRepository {
 
     suspend fun getPhotos(page: Int?, size: Int?): PhotosApiResponse
 

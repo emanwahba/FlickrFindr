@@ -4,9 +4,9 @@ import com.wb.flickrfindr.data.remote.PhotosApi
 import com.wb.flickrfindr.data.remote.model.PhotosApiResponse
 import javax.inject.Inject
 
-class PhotoRepositoryImpl @Inject constructor(
+class PhotosRepositoryImpl @Inject constructor(
     private val api: PhotosApi
-) : PhotoRepository {
+) : PhotosRepository {
 
     override suspend fun getPhotos(page: Int?, size: Int?): PhotosApiResponse {
         return api.getPhotos(page, size)

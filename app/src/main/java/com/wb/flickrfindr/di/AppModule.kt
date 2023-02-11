@@ -3,8 +3,8 @@ package com.wb.flickrfindr.di
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.wb.flickrfindr.data.remote.PhotosApi
-import com.wb.flickrfindr.data.repository.PhotoRepository
-import com.wb.flickrfindr.data.repository.PhotoRepositoryImpl
+import com.wb.flickrfindr.data.repository.PhotosRepository
+import com.wb.flickrfindr.data.repository.PhotosRepositoryImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -19,7 +19,7 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun providePhotoRepository(api: PhotosApi): PhotoRepository = PhotoRepositoryImpl(api)
+    fun providePhotosRepository(api: PhotosApi): PhotosRepository = PhotosRepositoryImpl(api)
 
     @Singleton
     @Provides
