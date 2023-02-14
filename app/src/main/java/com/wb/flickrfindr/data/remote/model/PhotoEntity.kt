@@ -2,7 +2,12 @@ package com.wb.flickrfindr.data.remote.model
 
 import com.google.gson.annotations.SerializedName
 
-data class Photo(
+const val PHOTO_BASE_URL = "https://live.staticflickr.com"
+const val PHOTO_SIZE_THUMBNAIL = "c"
+const val PHOTO_SIZE_LARGE = "b"
+const val PHOTO_FORMAT = "jpg"
+
+data class PhotoEntity(
     @SerializedName("farm")
     val farm: Int,
     @SerializedName("id")

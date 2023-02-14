@@ -1,8 +1,8 @@
 package com.wb.flickrfindr.domain.usecase
 
 import com.wb.flickrfindr.data.repository.PhotosRepository
-import com.wb.flickrfindr.domain.converter.toPhotosEntity
-import com.wb.flickrfindr.domain.model.PhotosEntity
+import com.wb.flickrfindr.domain.converter.toPhotos
+import com.wb.flickrfindr.domain.model.Photos
 import com.wb.flickrfindr.util.NetworkResult
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -13,11 +13,12 @@ import javax.inject.Inject
 class GetPhotos @Inject constructor(
     private val repository: PhotosRepository
 ) {
-    operator fun invoke(page: Int?, size: Int?): Flow<NetworkResult<PhotosEntity>> = flow {
+    operator fun invoke(page: Int?, size: Int?): Flow<NetworkResult<Photos>> = flow {
         try {
             emit(NetworkResult.Loading())
-            val photosEntity =
-                repository.getPhotos(page, size).photos.toPhotosEntity()
+            val photosEntity = repository.getPhotos(page, size)
+                .photosEntity
+                .toPhotos()
             emit(NetworkResult.Success(photosEntity))
         } catch (e: HttpException) {
             emit(NetworkResult.Error(e.localizedMessage ?: "An unexpected error occurred"))

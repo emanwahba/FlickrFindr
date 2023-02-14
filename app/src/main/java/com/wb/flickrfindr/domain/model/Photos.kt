@@ -1,7 +1,7 @@
 package com.wb.flickrfindr.domain.model
 
-data class PhotosEntity(
+data class Photos(
     val pageNumber: Int,
     val noOfPages: Int,
-    val photoList: List<PhotoEntity>,
+    val photoList: List<Photo>,
 )

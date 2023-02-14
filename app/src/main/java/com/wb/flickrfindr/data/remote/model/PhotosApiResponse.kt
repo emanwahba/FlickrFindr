@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName
 
 data class PhotosApiResponse(
     @SerializedName("photos")
-    val photos: Photos,
+    val photosEntity: PhotosEntity,
     @SerializedName("stat")
     val stat: String
 )

@@ -1,18 +1,17 @@
 package com.wb.flickrfindr.domain.converter
 
-import com.wb.flickrfindr.data.remote.model.Photo
-import com.wb.flickrfindr.data.remote.model.Photos
-import com.wb.flickrfindr.domain.model.PhotoEntity
-import com.wb.flickrfindr.domain.model.PhotosEntity
+import com.wb.flickrfindr.data.remote.model.*
+import com.wb.flickrfindr.domain.model.Photo
+import com.wb.flickrfindr.domain.model.Photos
 
-fun Photos.toPhotosEntity() = PhotosEntity(
+fun PhotosEntity.toPhotos() = Photos(
     pageNumber = this.page,
     noOfPages = this.pages,
-    photoList = this.photoList.map { it.toPhotoEntity() }
+    photoList = this.photoList.map { it.toPhoto() }
 )
 
-fun Photo.toPhotoEntity() = PhotoEntity(
-    photoName = title,
-    number = 0, //TODO
-    imageUrl = "" //TODO
+fun PhotoEntity.toPhoto() = Photo(
+    title = title,
+    thumbnailUrl = "${PHOTO_BASE_URL}/${server}/${id}_${secret}_${PHOTO_SIZE_THUMBNAIL}.${PHOTO_FORMAT}",
+    detailImageUrl = "${PHOTO_BASE_URL}/${server}/${id}_${secret}_${PHOTO_SIZE_LARGE}.${PHOTO_FORMAT}"
 )
